@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ModelARX.cpp" />
     <ClCompile Include="Testy_ARX.cpp" />
   </ItemGroup>
   <ItemGroup>
