@@ -1,0 +1,16 @@
+﻿  ModelARX.cpp
+C:\Users\User\Desktop\SymulatorUAR\SymulatorUAR\ModelARX.h(13,26): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+  (kompilowanie pliku źródłowego „ModelARX.cpp”)
+  
+C:\Users\User\Desktop\SymulatorUAR\SymulatorUAR\ModelARX.h(27,26): warning C4244: "argument": konwersja z "double" do "unsigned __int64", możliwa utrata danych
+  (kompilowanie pliku źródłowego „ModelARX.cpp”)
+  
+  Testy_ARX.cpp
+C:\Users\User\Desktop\SymulatorUAR\SymulatorUAR\ModelARX.h(13,26): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+  (kompilowanie pliku źródłowego „Testy_ARX.cpp”)
+  
+C:\Users\User\Desktop\SymulatorUAR\SymulatorUAR\ModelARX.h(27,26): warning C4244: "argument": konwersja z "double" do "unsigned __int64", możliwa utrata danych
+  (kompilowanie pliku źródłowego „Testy_ARX.cpp”)
+  
+  Generowanie kodu...
+  SymulatorUAR.vcxproj -> C:\Users\User\Desktop\SymulatorUAR\SymulatorUAR\x64\Debug\SymulatorUAR.exe
