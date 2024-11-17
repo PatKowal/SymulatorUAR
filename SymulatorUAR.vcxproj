@@ -127,9 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TestPIDA.cpp" />
     <ClCompile Include="Testy_ARX.cpp" />
+    <ClCompile Include="Testy_PID.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Biblioteki.h" />
+    <ClInclude Include="Kolejki.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="RegulatorPID.h" />
     <ClInclude Include="Start.h" />

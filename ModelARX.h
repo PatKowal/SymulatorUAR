@@ -1,16 +1,11 @@
 #pragma once
-#include <iostream>
-#include <deque>
-#include <vector>
-#include <iomanip>
+#include "Biblioteki.h"
 
-using namespace std;
-
-class ModelARX
+class ModelARX : public Kolejki
 {
 public:
 	ModelARX(const std::vector<double>& A, const std::vector<double>& B, int Delay, double Z)
-		: A(A), B(B), QueueSize(max(A.size(), B.size() + Delay)), Delay(Delay), Z(Z)
+		: A(A), B(B), QueueSize(std::max(A.size(), B.size() + Delay)) ,Delay(Delay), Z(Z)
 	{
 		Queue_U = std::deque<double>(QueueSize, 0.0);
 		Queue_Y = std::deque<double>(QueueSize, 0.0);
@@ -39,11 +34,8 @@ public:
 		return y;
 	}
 private:
-	std::vector<double> A;
-	std::vector<double> B;
-	int QueueSize;
-	int Delay;
+	std::vector<double> A, B;
+	int QueueSize, Delay;
 	double Z;
-	std::deque<double> Queue_U;
-	std::deque<double> Queue_Y;
+
 };
