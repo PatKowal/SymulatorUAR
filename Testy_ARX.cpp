@@ -5,7 +5,7 @@
 #include "ModelARX.h"
 #include "Start.h"
 
-#ifdef DEBUG
+#ifdef DEBUGARX
 
 //Funkcje pomocnicze dla testów:
 

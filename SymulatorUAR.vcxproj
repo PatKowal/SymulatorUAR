@@ -127,14 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ModelARX.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RegulatorPID.cpp" />
+    <ClCompile Include="SprzezenieZwrotne.cpp" />
     <ClCompile Include="Testy_ARX.cpp" />
     <ClCompile Include="Testy_PID.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Biblioteki.h" />
-    <ClInclude Include="Kolejki.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="RegulatorPID.h" />
+    <ClInclude Include="SprzezenieZwrotne.h" />
     <ClInclude Include="Start.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
