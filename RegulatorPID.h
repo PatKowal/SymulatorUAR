@@ -5,7 +5,7 @@ class PID
 {
 public:
 	PID(double k, double Ti, double Td)
-		: k(k), Ti(Ti), Td(Td), Sum_EI(0.0), EI_ost(0.0) {};
+		: k(k), Ti(Ti), Td(Td), Sum_EI(0.0), EI_ost(0.0), ULast(0.0) {};
 	PID(double k, double Ti)
 		: PID(k, Ti, 0.0) {};
 	PID(double k)
@@ -26,9 +26,10 @@ public:
 
 		double U = UI_P + UI_I + UI_D;
 		EI_ost = EI;
+		ULast = U;
 		return U;
 	};
-
+	double getULast() const { return ULast; }
 private:
-	double k, Ti, Td, Sum_EI, EI_ost;
+	double k, Ti, Td, Sum_EI, EI_ost, ULast;
 };
