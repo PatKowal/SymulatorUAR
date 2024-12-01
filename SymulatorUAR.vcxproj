@@ -127,10 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ModelARX.cpp" />
     <ClCompile Include="Program.cpp" />
-    <ClCompile Include="RegulatorPID.cpp" />
-    <ClCompile Include="SprzezenieZwrotne.cpp" />
     <ClCompile Include="Testy_ARX.cpp" />
     <ClCompile Include="Testy_PID.cpp" />
   </ItemGroup>

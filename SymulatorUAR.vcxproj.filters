@@ -24,15 +24,6 @@
     <ClCompile Include="Program.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="SprzezenieZwrotne.cpp">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClCompile>
-    <ClCompile Include="RegulatorPID.cpp">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelARX.cpp">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModelARX.h">
