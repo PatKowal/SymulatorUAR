@@ -5,7 +5,7 @@ class ModelARX
 {
 public:
 	ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, double Z)
-		: A(A), B(B), delay(delay), Z(Z), YLast(0.0) {
+		: A(A), B(B), delay(delay), Z(Z), Y_ost(0.0) {
 		QueueSize = std::max(A.size(), B.size() + delay);
 		Queue_U = std::deque<double>(QueueSize, 0.0);
 		Queue_Y = std::deque<double>(QueueSize, 0.0);
@@ -28,17 +28,17 @@ public:
 
 		y += Z;
 
-		YLast = y;
+		Y_ost = y;
 		Queue_Y.push_front(y);
 		Queue_Y.pop_back();
 		return y;
 	}
 
-	double getYLast() const { return YLast; }
+	double getY_ost() const { return Y_ost; }
 private:
 	std::vector<double> A, B;
 	int QueueSize, delay;
 	double Z;
 	std::deque<double> Queue_U, Queue_Y;
-	double YLast;
+	double Y_ost;
 };
