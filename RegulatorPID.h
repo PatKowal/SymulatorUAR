@@ -23,7 +23,6 @@ public:
 		}
 
 		double UI_D = Td * (EI - EI_ost);
-
 		double U = UI_P + UI_I + UI_D;
 		EI_ost = EI;
 		U_ost = U;

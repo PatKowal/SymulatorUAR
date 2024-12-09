@@ -7,7 +7,7 @@ class SprzezenieZwrotne
 {
 public:
 	SprzezenieZwrotne(const std::vector<double>& A, const std::vector<double>& B, int delay, double k, double Ti, double Td)
-		: pid(k, Ti, Td), model(A, B, delay, 0), gen_w(Sygnal::Krok), U(0.0) {}
+		: pid(k, Ti, Td), model(A, B, delay, 0.0), gen_w(Sygnal::Krok), U(0.0) {}
 	SprzezenieZwrotne(const std::vector<double>& A, const std::vector<double>& B, int delay, double k, double Ti)
 		: SprzezenieZwrotne(A, B, delay, k, Ti, 0.0) {}
 	SprzezenieZwrotne(const std::vector<double>& A, const std::vector<double>& B, int delay, double k)
@@ -15,10 +15,10 @@ public:
 
 	~SprzezenieZwrotne() {};
 
-	double SimE(double czas) {
+	double SimUAR(double czas) {
 		double wartZadana = gen_w.GenerujSygnal(czas);
-		double E = wartZadana - model.SimY(U);
-		U = pid.SumU(E);
+		double EI = wartZadana - model.SimY(U);
+		U = pid.SumU(EI);
 		return model.SimY(U);
 	}
 

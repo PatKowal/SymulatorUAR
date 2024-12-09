@@ -6,7 +6,7 @@ enum class Sygnal { Krok, Prostokat, Sin };
 class GenWartZadana
 {
 public:
-	GenWartZadana(Sygnal typ, double t = 0.0, double A = 1.0, double T = 1.0, double p = 1.0)
+	GenWartZadana(Sygnal typ, double t = 5.0, double A = 1.0, double T = 0.2, double p = 0.2)
 		: typ(typ), t(t), A(A), T(T), p(p), i(0.0) 
 	{
 		WalidacjaParametrow();
@@ -31,7 +31,7 @@ public:
 				return 0.0;
 			}
 		case Sygnal::Sin:
-			return A * sin((fmod(i, T) / T) * 2 * M_PI);
+			return (A * sin(2 * M_PI * fmod(i, T) / T));
 		default:
 			return 0.0;
 		}
@@ -52,7 +52,7 @@ private:
 	double A;	// wart stala
 	double T;	// okres 
 	double p;	// wypelnienie
-	double i;	// Czas symulacji
+	double i;	// czas??
 
 	void WalidacjaParametrow() {
 		if (T <= 0) {
