@@ -17,7 +17,7 @@ void main() {
 
 	for (size_t i = 0; i < 40; i++) {
 		loop.SimUAR(i);
-		std::cout << "Czas: " << i << "|Y: " << loop.getY_ost()<< "|U: " << loop.getU_ost() << "\n";
+		std::cout << "Czas: " << i << "\t| U: " << loop.getU_ost() << "\t| Y: " << loop.getY_ost() << "\n";
 	};
 
 

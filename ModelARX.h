@@ -27,10 +27,9 @@ public:
 		}
 
 		y += Z;
-
-		Y_ost = y;
 		Queue_Y.push_front(y);
 		Queue_Y.pop_back();
+		Y_ost = Queue_Y.back();
 		return y;
 	}
 
