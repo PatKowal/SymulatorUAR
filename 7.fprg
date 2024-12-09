@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-29 04:32:30 PM"/>
+        <attribute name="created" value="U3R1ZGVudDtTMzUyQS1LOTsyMDI0LTEwLTI5OzA0OjI1OjQzIFBNOzI1MDQ="/>
+        <attribute name="edited" value="U3R1ZGVudDtTMzUyQS1LOTsyMDI0LTEwLTI5OzA0OjMyOjMwIFBNOzU7MjYxMA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="a" type="Integer" array="False" size=""/>
+            <output expression="&quot;Podaj a&quot;" newline="True"/>
+            <input variable="a"/>
+            <if expression="a &gt;= 0">
+                <then>
+                    <if expression="a == 0">
+                        <then>
+                            <output expression="&quot;Podano 0&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Podano liczb&#281; dodatni&#261;&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;Podano liczb&#281; ujemn&#261;&quot;" newline="True"/>
+                </else>
+            </if>
+            <if expression="abs(a) % 2 == 0">
+                <then>
+                    <output expression="&quot;Podano liczb&#281; parzyst&#261;&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Podano liczb&#281; nieparzyst&#261;&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

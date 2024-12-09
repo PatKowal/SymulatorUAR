@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-29 04:25:33 PM"/>
+        <attribute name="created" value="U3R1ZGVudDtTMzUyQS1LOTsyMDI0LTEwLTI5OzAzOjU5OjA4IFBNOzI1MTE="/>
+        <attribute name="edited" value="U3R1ZGVudDtTMzUyQS1LOTsyMDI0LTEwLTI5OzA0OjI1OjMzIFBNOzE2OzI2NjU="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="a, b" type="Integer" array="False" size=""/>
+            <output expression="&quot;Podaj liczb&#281; a&quot;" newline="True"/>
+            <input variable="a"/>
+            <output expression="&quot;Podaj liczb&#281; b&quot;" newline="True"/>
+            <input variable="b"/>
+            <declare name="wynik" type="Real" array="False" size=""/>
+            <if expression="b!=0">
+                <then>
+                    <assign variable="wynik" expression="a/b"/>
+                    <output expression="&quot;wynik = &quot; &amp; wynik" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Nie mozna dzielic przez 0&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

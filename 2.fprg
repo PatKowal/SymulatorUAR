@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Student"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-29 04:07:11 PM"/>
+        <attribute name="created" value="U3R1ZGVudDtTMzUyQS1LOTsyMDI0LTEwLTI5OzAzOjU5OjA4IFBNOzI1MTE="/>
+        <attribute name="edited" value="U3R1ZGVudDtTMzUyQS1LOTsyMDI0LTEwLTI5OzA0OjA3OjExIFBNOzE7MjYwNw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="a, b, wynik" type="Integer" array="False" size=""/>
+            <output expression="&quot;Podaj liczb&#281; a&quot;" newline="True"/>
+            <input variable="a"/>
+            <output expression="&quot;Podaj liczb&#281; b&quot;" newline="True"/>
+            <input variable="b"/>
+            <assign variable="wynik" expression="a + b"/>
+            <output expression="a &amp; &quot; + &quot; &amp; b &amp; &quot; = &quot; &amp; wynik" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
