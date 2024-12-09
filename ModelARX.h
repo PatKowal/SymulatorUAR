@@ -21,7 +21,6 @@ public:
 		for (size_t i = 0; i < B.size(); i++) {
 			y += B[i] * Queue_U[i + delay];
 		}
-
 		for (size_t i = 0; i < A.size(); i++) {
 			y -= A[i] * Queue_Y[i];
 		}

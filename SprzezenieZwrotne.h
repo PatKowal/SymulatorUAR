@@ -15,15 +15,22 @@ public:
 
 	~SprzezenieZwrotne() {};
 
+	double SimW(double czas) { return gen_w.GenerujSygnal(czas); }
+	double SimEI(double wartZadana) { return wartZadana - model.SimY(U); }
+	double SimPID(double EI) { return pid.SumU(EI); }
+	double SimARX(double U) { return model.SimY(U); }
+
 	double SimUAR(double czas) {
-		double wartZadana = gen_w.GenerujSygnal(czas);
-		double EI = wartZadana - model.SimY(U);
-		U = pid.SumU(EI);
-		return model.SimY(U);
+		double wartZadana = SimW(czas);
+		double EI = SimEI(wartZadana);
+		std::cout << EI;
+		U = SimPID(EI);
+		return SimARX(U);
 	}
 
-	double getY_ost() { return model.getY_ost(); }
-	double getU_ost() { return pid.getU_ost(); }
+	double getY_ost() const { return model.getY_ost(); }
+	double getU_ost() const { return pid.getU_ost(); }
+	void setGen(Sygnal typ, double t, double Amp, double T, double p) { gen_w.setGen(typ, t, Amp, T, p); }
 
 private:
 	PID pid;

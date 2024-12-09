@@ -28,6 +28,7 @@ public:
 		U_ost = U;
 		return U;
 	};
+	void Reset() { Sum_EI = 0.0; EI_ost = 0.0; }
 	double getU_ost() const { return U_ost; }
 private:
 	double k, Ti, Td, Sum_EI, EI_ost, U_ost;
