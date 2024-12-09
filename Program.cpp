@@ -19,9 +19,8 @@ void main() {
 		loop.setGen(Sygnal::Krok, 100, 5, 0.0, 0.0);
 
 		for (size_t i = 0; i < 10; i++) {
-			double czas = i * 0.1;
-			loop.SimUAR(czas);
-			std::cout << "Czas: " << i << "\t| U: " << loop.getU_ost() << "\t| Y: " << loop.getY_ost() << "\n";
+			loop.SimUAR(i);
+			std::cout << "Czas: " << i<< "\t| U: " << loop.getU_ost() << "\t| Y: " << loop.getY_ost() << "\n";
 		};
 	}
 	catch (const std::invalid_argument& e) {
