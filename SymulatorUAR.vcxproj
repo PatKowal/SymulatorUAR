@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Pośrednik.h" />
+    <ClCompile Include="Manager.h" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Testy_ARX.cpp" />
     <ClCompile Include="Testy_PID.cpp" />

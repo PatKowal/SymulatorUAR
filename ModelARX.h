@@ -33,6 +33,12 @@ public:
 	}
 
 	double getY_ost() const { return Y_ost; }
+	void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z) {
+		this->A = A;
+		this->B = B;
+		this->delay = delay;
+		this->Z = Z;
+	}
 private:
 	std::vector<double> A, B;
 	int QueueSize, delay;

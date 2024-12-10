@@ -24,7 +24,7 @@
     <ClCompile Include="Program.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Pośrednik.h">
+    <ClCompile Include="Manager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
   </ItemGroup>

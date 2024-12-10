@@ -4,12 +4,8 @@
 class PID
 {
 public:
-	PID(double k, double Ti, double Td)
+	PID(double k, double Ti = 0.0, double Td = 0.0)
 		: k(k), Ti(Ti), Td(Td), Sum_EI(0.0), EI_ost(0.0), U_ost(0.0) {};
-	PID(double k, double Ti)
-		: PID(k, Ti, 0.0) {};
-	PID(double k)
-		: PID(k, 0.0, 0.0) {};
 
 	~PID() {};
 
@@ -28,8 +24,13 @@ public:
 		U_ost = U;
 		return U;
 	};
-	void Reset() { Sum_EI = 0.0; EI_ost = 0.0; }
+	void ResetPID() { Sum_EI = 0.0;}
 	double getU_ost() const { return U_ost; }
+	void setPID(std::vector<double>& ParametryPID) {
+		this->k = ParametryPID[0];
+		this->Ti = ParametryPID[1];
+		this->Td = ParametryPID[2];
+	}
 private:
 	double k, Ti, Td, Sum_EI, EI_ost, U_ost;
 };
