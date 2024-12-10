@@ -23,7 +23,7 @@ public:
 	double SimUAR(double czas) {
 		double wartZadana = SimW(czas);
 		double EI = SimEI(wartZadana);
-		std::cout << EI;
+		//std::cout << EI;
 		U = SimPID(EI);
 		return SimARX(U);
 	}
