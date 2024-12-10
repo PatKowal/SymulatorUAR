@@ -17,12 +17,15 @@ public:
 		i += czas;
 		switch (typ) {
 		case Sygnal::Skok:
-			return (i <= t) ? Amp : 0.0;
+			WartZadana = (i <= t) ? Amp : 0.0;
+			return WartZadana;
 		case Sygnal::Prostokat:
-			return (fmod(i, T) < p * T) ? Amp : 0.0;
+			WartZadana = (fmod(i, T) < p * T) ? Amp : 0.0;
+			return WartZadana;
 		case Sygnal::Sin:
 			WalidacjaParametrow();
-			return (Amp * sin(2 * M_PI * fmod(i, T) / T));
+			WartZadana = (Amp * sin(2 * M_PI * fmod(i, T) / T));
+			return WartZadana;
 		default:
 			return 0.0;
 		}

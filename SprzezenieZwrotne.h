@@ -1,7 +1,6 @@
 #pragma once
 #include "ModelARX.h"
 #include "RegulatorPID.h"
-#include "GenWartZadana.h"
 
 class SprzezenieZwrotne
 {
@@ -11,11 +10,9 @@ public:
 
 	~SprzezenieZwrotne() {};
 
-	//double SimW(double czas) { return gen_w.GenerujSygnal(czas); }
 	double SimEI(double wartZadana) { return wartZadana - model.SimY(U); }
 	double SimPID(double EI) { return pid.SumU(EI); }
 	double SimARX(double U) { return model.SimY(U); }
-
 	double SimUAR(double wartZadana) {
 		double EI = SimEI(wartZadana);
 		U = SimPID(EI);

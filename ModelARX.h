@@ -38,11 +38,13 @@ public:
 		this->B = B;
 		this->delay = delay;
 		this->Z = Z;
+		QueueSize = std::max(A.size(), B.size() + delay);
+		Queue_U.resize(QueueSize, 0.0);
+		Queue_U.resize(QueueSize, 0.0);
 	}
 private:
 	std::vector<double> A, B;
 	int QueueSize, delay;
-	double Z;
+	double Z, Y_ost;
 	std::deque<double> Queue_U, Queue_Y;
-	double Y_ost;
 };
