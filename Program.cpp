@@ -18,7 +18,6 @@ void main() {
 		Manager manager;
 
 		manager.setModelARX(A, B, delay, 0);
-		manager.setModelARX(A, B, delay+1, 0);
 		manager.setRegulatorPID(ParametryPID);
 		manager.setGenerator(Sygnal::Sin, ParametryGen);
 

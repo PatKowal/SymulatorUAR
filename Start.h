@@ -1,4 +1,5 @@
 #pragma once
 
-#define PROGRAM // ustaw na MAIN aby skompilowaæ program docelowy 
-			  // ustaw na DEBUGARX lub DEBUGPID aby skompilowaæ program testujacy
+//#define DEBUGPID // ustaw na MAIN aby skompilowaæ program docelowy 
+//#define DEBUGARX 
+#define PROGRAM // ustaw na DEBUGARX lub DEBUGPID aby skompilowaæ program testujacy

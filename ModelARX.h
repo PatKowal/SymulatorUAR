@@ -5,10 +5,9 @@ class ModelARX
 {
 public:
 	ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, double Z)
-		: A(A), B(B), delay(delay), Z(Z), Y_ost(0.0) {
-		QueueSize = std::max(A.size(), B.size() + delay);
-		Queue_U = std::deque<double>(QueueSize, 0.0);
-		Queue_Y = std::deque<double>(QueueSize, 0.0);
+		: A(A), B(B), delay(delay), Z(Z), WY(0.0) {
+		Queue_U = std::deque<double>(B.size() + delay, 0.0);
+		Queue_Y = std::deque<double>(A.size(), 0.0);
 	}
 	~ModelARX() {}
 
@@ -18,6 +17,7 @@ public:
 		Queue_U.pop_back();
 
 		double y = 0.0;
+
 		for (size_t i = 0; i < B.size(); i++) {
 			y += B[i] * Queue_U[i + delay];
 		}
@@ -28,23 +28,22 @@ public:
 		y += Z;
 		Queue_Y.push_front(y);
 		Queue_Y.pop_back();
-		Y_ost = Queue_Y.back();
+		WY = y;
 		return y;
 	}
 	
-	double getY_ost() const { return Y_ost; }
+	double getY_ost() const { return WY; }
 	void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z) {
 		this->A = A;
 		this->B = B;
 		this->delay = delay;
 		this->Z = Z;
-		QueueSize = std::max(A.size(), B.size() + delay);
-		Queue_U.resize(QueueSize, 0.0);
-		Queue_Y.resize(QueueSize, 0.0);
+		Queue_U.resize(B.size() + delay, 0.0);
+		Queue_Y.resize(A.size(), 0.0);
 	}
 private:
 	std::vector<double> A, B;
-	int QueueSize, delay;
-	double Z, Y_ost;
+	int delay;
+	double Z, WY;
 	std::deque<double> Queue_U, Queue_Y;
 };
