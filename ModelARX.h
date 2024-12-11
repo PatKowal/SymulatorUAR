@@ -31,7 +31,7 @@ public:
 		Y_ost = Queue_Y.back();
 		return y;
 	}
-
+	
 	double getY_ost() const { return Y_ost; }
 	void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z) {
 		this->A = A;
@@ -40,7 +40,7 @@ public:
 		this->Z = Z;
 		QueueSize = std::max(A.size(), B.size() + delay);
 		Queue_U.resize(QueueSize, 0.0);
-		Queue_U.resize(QueueSize, 0.0);
+		Queue_Y.resize(QueueSize, 0.0);
 	}
 private:
 	std::vector<double> A, B;
