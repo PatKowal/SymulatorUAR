@@ -142,13 +142,11 @@ void MainWindow::on_Start_Button_clicked()
 
 void MainWindow::on_Reset_Button_clicked()
 {
-
     if (timer) {
         timer->stop();
         delete timer;
         timer = nullptr;
     }
-
 
     if (chart && series && series2 && series3) {
         chart->removeSeries(series);
@@ -159,29 +157,19 @@ void MainWindow::on_Reset_Button_clicked()
         delete series2;
         delete series3;
 
-        series = nullptr;
-        series2 = nullptr;
-        series3 = nullptr;
-
-        if(chart && !series && !series2 && !series3)
-        {
-
         series = new QLineSeries();
         series->setColor("blue");
+        chart->addSeries(series);
         series2 = new QLineSeries();
         series2->setColor("red");
+        chart->addSeries(series2);
         series3 = new QLineSeries();
         series3->setColor("green");
-
-        chart->addSeries(series);
-        chart->addSeries(series2);
         chart->addSeries(series3);
-        }
 
         chart->createDefaultAxes();
         chart->axes(Qt::Vertical).first()->setRange(-500, 500);
     }
-
 
     x = 0;
 
