@@ -13,7 +13,7 @@ class Manager : public QObject
     Q_OBJECT
 
 public:
-    Manager() : QObject(), loop(), gen_w(), Stan(false) {}
+    Manager() : QObject(), loop(), gen_w() {}
     ~Manager() {}
 
 public slots:
@@ -31,15 +31,12 @@ public slots:
     }
 
     void setModelARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
-
         loop.setARX(A, B, delay, Z);
     }
 
     std::vector<double> getWY(){
         return { gen_w.getWartZadana(),loop.getU_ost(),loop.getY_ost() };
-
     }
-
 
     void Symuluj(double czas) {
         double wartZadana = gen_w.GenerujSygnal(czas);
@@ -49,6 +46,5 @@ public slots:
 private:
     SprzezenieZwrotne loop;
     GenWartZadana gen_w;
-    bool Stan;
 };
 
