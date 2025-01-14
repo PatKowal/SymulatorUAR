@@ -25,19 +25,19 @@ public slots:
     }
 
     void setRegulatorPID(std::vector<double>& ParametryPID) {
-
         loop.setPID(ParametryPID);
-        loop.ResetPID();
     }
 
     void setModelARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
         loop.setARX(A, B, delay, Z);
     }
-
+    void ResetSim() {
+        loop.ResetSim();
+        gen_w.ResetCzas();
+    }
     std::vector<double> getWY(){
         return { gen_w.getWartZadana(),loop.getU_ost(),loop.getY_ost() };
     }
-
     void Symuluj(double czas) {
         double wartZadana = gen_w.GenerujSygnal(czas);
         loop.SimUAR(wartZadana);

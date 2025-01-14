@@ -42,6 +42,7 @@ public:
     double getWartZadana() {
         return WartZadana;
     }
+    void ResetCzas() { i = 0.0; WartZadana = 0.0; };
 private:
     Sygnal typ;
     double t;	// chwila aktywacji

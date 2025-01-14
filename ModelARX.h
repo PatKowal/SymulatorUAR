@@ -16,7 +16,7 @@ public:
 	double SimY(double signal) {
 
 		Queue_U.push_front(signal);
-		Queue_U.pop_back();
+        Queue_U.pop_back();
 
 		double y = 0.0;
 
@@ -45,6 +45,18 @@ public:
 		Queue_U.resize(B.size() + delay, 0.0);
 		Queue_Y.resize(A.size(), 0.0);
 	}
+
+    void ResetARX(){
+        for (size_t i = 0; i < B.size() + delay; i++) {
+            Queue_U.push_front(0.0);
+            Queue_U.pop_back();
+        }
+        for (size_t i = 0; i < A.size(); i++) {
+            Queue_Y.push_front(0.0);
+            Queue_Y.pop_back();
+        }
+    }
+
 private:
 	std::vector<double> A, B;
 	int delay;
