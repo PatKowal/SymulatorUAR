@@ -1,7 +1,7 @@
 #pragma once
 #define M_PI 3.14159265358979323846 // pi
 #include "Biblioteki.h"
-enum class Sygnal { Skok, Prostokat, Sin };
+enum class Sygnal { Skok, Prostokat, Sin , Nieustawiony};
 
 class GenWartZadana
 {
@@ -24,7 +24,7 @@ public:
 			return WartZadana;
 		case Sygnal::Sin:
 			WalidacjaParametrow();
-			WartZadana = (Amp * sin(2 * M_PI * fmod(i, T) / T));
+			WartZadana = (Amp * (sin(2 * M_PI * fmod(i, T) / T)));
 			return WartZadana;
 		default:
 			return 0.0;

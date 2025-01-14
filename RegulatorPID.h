@@ -11,6 +11,7 @@ public:
 
 	double SumU(double EI) {
 
+		U = 0.0;
 		double UI_P = k * EI;
 		double UI_I = 0.0;
 		if (Ti != 0) {
@@ -24,7 +25,7 @@ public:
 		return U;
 	};
 	void ResetPID() { Sum_EI = 0.0;}
-	double getU_ost() const { return U; }
+	double getU() const { return U; }
 	void setPID(std::vector<double>& ParametryPID) {
 		this->k = ParametryPID[0];
 		this->Ti = ParametryPID[1];
