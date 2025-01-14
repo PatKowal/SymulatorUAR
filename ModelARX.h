@@ -41,6 +41,7 @@ public:
         this->A = A;
 		this->B = B;
 		this->delay = delay;
+        this->Z = Z;
 		Queue_U.resize(B.size() + delay, 0.0);
 		Queue_Y.resize(A.size(), 0.0);
 	}
