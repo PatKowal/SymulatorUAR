@@ -1,10 +1,12 @@
 #pragma once
-#include "Biblioteki.h"
+#include <deque>
+#include <vector>
+#include <QDebug>
 
 class ModelARX
 {
 public:
-	ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, double Z = 0.0)
+    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, double Z = 0.0)
 		: A(A), B(B), delay(delay), Z(Z), WY(0.0) {
 		Queue_U = std::deque<double>(B.size() + delay, 0.0);
 		Queue_Y = std::deque<double>(A.size(), 0.0);
@@ -29,15 +31,16 @@ public:
 		Queue_Y.push_front(y);
 		Queue_Y.pop_back();
 		WY = y;
+
 		return y;
 	}
 	
-	double getY() const { return WY; }
-	void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
-		this->A = A;
+    double getY() const { return WY; }
+    void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
+
+        this->A = A;
 		this->B = B;
 		this->delay = delay;
-		this->Z = Z;
 		Queue_U.resize(B.size() + delay, 0.0);
 		Queue_Y.resize(A.size(), 0.0);
 	}

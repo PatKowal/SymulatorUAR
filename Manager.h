@@ -1,40 +1,54 @@
 #pragma once
-#include "Biblioteki.h"
+#include <QObject>
+#include <vector>
+#include <cassert>
 #include "SprzezenieZwrotne.h"
 #include "GenWartZadana.h"
+#include <QDebug>
 
-class Manager
+
+
+class Manager : public QObject
 {
-public:
-	Manager() : loop(), gen_w() {};
-	~Manager() {};
+    Q_OBJECT
 
-	void setGenerator(Sygnal typ, std::vector<double>& ParametryGen) {
-		//assert(ParametryGen.size() == 4 && "Za ma³o parametów generatora");
-		gen_w.setGen(typ, ParametryGen);
-	};
-	void setRegulatorPID(std::vector<double>& ParametryPID) {
-		//assert(ParametryPID.size() == 3 && "Za ma³o parametów regulatora");
-		loop.setPID(ParametryPID);
-		loop.ResetPID();
-		//std::cout << "Parametry PID zmienione" << "\n";
-	};
-	void setModelARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
-		//assert(!A.empty() && "Wektor A jest pusty");
-		//assert(!B.empty() && "Wektor B jest pusty");
-		//assert(delay >= 0 && "OpóŸnienie musi byæ wiêksze lub równe 0");
-		loop.setARX(A, B, delay, Z);
-		//std::cout << "Parametry ARX zmienione" << "\n";
-	};
-	std::vector<double> getWY() {
-		return { gen_w.getWartZadana(),loop.getRegU(),loop.getModelY() };
-	};
-	void Symuluj(double czas) {
-		double wartZadana = gen_w.GenerujSygnal(czas);
-		loop.SimUAR(wartZadana);
-	}
+public:
+    Manager() : QObject(), loop(), gen_w(), Stan(false) {}
+    ~Manager() {}
+
+public slots:
+
+    void setGenerator(Sygnal typ, std::vector<double>& ParametryGen) {
+        qDebug() << "ParametryGen:" << ParametryGen;
+
+        gen_w.setGen(typ, ParametryGen);
+    }
+
+    void setRegulatorPID(std::vector<double>& ParametryPID) {
+
+        loop.setPID(ParametryPID);
+        loop.ResetPID();
+    }
+
+    void setModelARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
+
+        loop.setARX(A, B, delay, Z);
+    }
+
+    std::vector<double> getWY(){
+        return { gen_w.getWartZadana(),loop.getU_ost(),loop.getY_ost() };
+
+    }
+
+
+    void Symuluj(double czas) {
+        double wartZadana = gen_w.GenerujSygnal(czas);
+        loop.SimUAR(wartZadana);
+    }
 
 private:
-	SprzezenieZwrotne loop;
-	GenWartZadana gen_w;
+    SprzezenieZwrotne loop;
+    GenWartZadana gen_w;
+    bool Stan;
 };
+
