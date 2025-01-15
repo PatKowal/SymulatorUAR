@@ -7,7 +7,7 @@ class ModelARX
 {
 public:
     ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, bool zaklucenia = 0)
-        : A(A), B(B), delay(delay), zaklucenia(zaklucenia), Y(0.0) {
+        : A(A), B(B), delay(delay), zaklucenia(zaklucenia) {
 		Queue_U = std::deque<double>(B.size() + delay, 0.0);
 		Queue_Y = std::deque<double>(A.size(), 0.0);
 	}
@@ -24,7 +24,7 @@ public:
 		Queue_U.push_front(signal);
         Queue_U.pop_back();
 
-        Y = 0.0;
+        double Y = 0.0;
 
 		for (size_t i = 0; i < B.size(); i++) {
             Y += B[i] * Queue_U[i + delay];

@@ -1,7 +1,6 @@
 #include "Manager.h"
-#include "Testy_ARX.cpp"
-#include "Testy_PID.cpp"
-#include "Testy_UAR.cpp"
+#include <iostream>
+#include <iomanip>
 
 #define DEBUG
 
