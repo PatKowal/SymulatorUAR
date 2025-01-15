@@ -40,8 +40,7 @@ public:
 
         return Y;
 	}
-	
-    double getY() const { return Y; }
+
     void setARX(std::vector<double>& A, std::vector<double>& B, int delay, bool zaklucenia = 0.0) {
         this->A = A;
 		this->B = B;
@@ -65,6 +64,6 @@ public:
 private:
     std::vector<double> A, B;
     int delay;
-    bool Z;
+    bool zaklucenia;
     std::deque<double> Queue_U, Queue_Y;
 };
