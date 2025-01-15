@@ -133,7 +133,6 @@
     <ClCompile Include="Testy_PID.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Biblioteki.h" />
     <ClInclude Include="GenWartZadana.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="RegulatorPID.h" />
