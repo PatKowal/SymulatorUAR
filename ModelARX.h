@@ -25,7 +25,7 @@ public:
 		Queue_U.push_front(signal);
         Queue_U.pop_back();
 
-        double Y = 0.0;
+        Y = 0.0;
 
 		for (size_t i = 0; i < B.size(); i++) {
             Y += B[i] * Queue_U[i + delay];
