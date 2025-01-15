@@ -1,13 +1,14 @@
 #pragma once
 #include <deque>
+#include <random>
 #include <vector>
 #include <QDebug>
 
 class ModelARX
 {
 public:
-    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, double Z = 0.0)
-		: A(A), B(B), delay(delay), Z(Z), WY(0.0) {
+    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, double zaklucenia = 0.0)
+        : A(A), B(B), delay(delay), zaklucenia(zaklucenia), Y(0.0) {
 		Queue_U = std::deque<double>(B.size() + delay, 0.0);
 		Queue_Y = std::deque<double>(A.size(), 0.0);
 	}
@@ -15,33 +16,39 @@ public:
 
 	double SimY(double signal) {
 
+        std::random_device rng_seed;
+        std::mt19937 rng;
+        rng.seed(rng_seed());
+
+        std::normal_distribution<double>gausDist(0,10);
+
 		Queue_U.push_front(signal);
         Queue_U.pop_back();
 
-		double y = 0.0;
+        double Y = 0.0;
 
 		for (size_t i = 0; i < B.size(); i++) {
-			y += B[i] * Queue_U[i + delay];
+            Y += B[i] * Queue_U[i + delay];
 		}
 		for (size_t i = 0; i < A.size(); i++) {
-			y -= A[i] * Queue_Y[i];
+            Y -= A[i] * Queue_Y[i];
 		}
 
-		y += Z;
+        zaklucenia = gausDist(rng);
+        Y += zaklucenia;
 		Queue_Y.push_front(y);
 		Queue_Y.pop_back();
-		WY = y;
 
-		return y;
+        return Y;
 	}
 	
-    double getY() const { return WY; }
-    void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double Z = 0.0) {
+    double getY() const { return Y; }
+    void setARX(std::vector<double>& A, std::vector<double>& B, int delay, double zaklucenia = 0.0) {
 
         this->A = A;
 		this->B = B;
 		this->delay = delay;
-        this->Z = Z;
+        this->zaklucenia = zaklucenia;
 		Queue_U.resize(B.size() + delay, 0.0);
 		Queue_Y.resize(A.size(), 0.0);
 	}
@@ -60,6 +67,6 @@ public:
 private:
 	std::vector<double> A, B;
 	int delay;
-	double Z, WY;
+    double zaklucenia, Y;
 	std::deque<double> Queue_U, Queue_Y;
 };
