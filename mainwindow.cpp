@@ -142,6 +142,7 @@ void MainWindow::on_Start_Button_clicked()
 
 void MainWindow::on_Reset_Button_clicked()
 {
+    manager->ResetSim();
     if (timer) {
         timer->stop();
         delete timer;
