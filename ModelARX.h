@@ -36,7 +36,7 @@ public:
 
         zaklucenia = gausDist(rng);
         Y += zaklucenia;
-		Queue_Y.push_front(y);
+		Queue_Y.push_front(Y);
 		Queue_Y.pop_back();
 
         return Y;
