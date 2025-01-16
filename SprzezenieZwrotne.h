@@ -6,7 +6,7 @@ class SprzezenieZwrotne
 {
 public:
 	SprzezenieZwrotne(const std::vector<double>& A = { 0.0 }, const std::vector<double>& B = { 0.0 }, int delay = 0, double k = 0.0, double Ti = 0.0, double Td = 0.0)
-        : pid(k, Ti, Td), model(A, B, delay), Y_ost(0.0) {};
+        : pid(k, Ti, Td), model(A, B, delay), Y_ost(0.0), U(0.0) {};
     SprzezenieZwrotne(ModelARX& model, PID& pid)
         : pid(pid), model(model), Y_ost(0.0) {};
 
@@ -20,6 +20,9 @@ public:
         return Y;
 	}
 
+    double getY() const { return Y_ost; }
+    double getU() const { return U; }
+
 	void setPID(std::vector<double>& ParametryPID) {
 		pid.setPID(ParametryPID);
 	}
@@ -31,5 +34,5 @@ public:
 private:
 	PID pid;
 	ModelARX model;
-    double Y_ost;
+    double Y_ost, U;
 };

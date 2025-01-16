@@ -6,8 +6,6 @@
 #include "GenWartZadana.h"
 #include <QDebug>
 
-
-
 class Manager : public QObject
 {
     Q_OBJECT
@@ -36,7 +34,7 @@ public slots:
         gen_w.ResetCzas();
     }
     std::vector<double> getWY(){
-        return { gen_w.getWartZadana(),loop.getU_ost(),loop.getY_ost() };
+        return { gen_w.getWartZadana(),loop.getU(),loop.getY() };
     }
     void Symuluj(double czas) {
         double wartZadana = gen_w.GenerujSygnal(czas);
