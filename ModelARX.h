@@ -6,7 +6,7 @@
 class ModelARX
 {
 public:
-    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay, bool zaklucenia = 0)
+    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay = 0, bool zaklucenia = 0)
         : A(A), B(B), delay(delay), zaklucenia(zaklucenia) {
 		Queue_U = std::deque<double>(B.size() + delay, 0.0);
 		Queue_Y = std::deque<double>(A.size(), 0.0);
@@ -18,7 +18,6 @@ public:
         std::random_device rng_seed;
         std::mt19937 rng;
         rng.seed(rng_seed());
-
         std::normal_distribution<double>gausDist(0,10);
 
 		Queue_U.push_front(signal);
@@ -32,7 +31,7 @@ public:
 		for (size_t i = 0; i < A.size(); i++) {
             Y -= A[i] * Queue_Y[i];
 		}
-        if(zaklucenia==1){
+        if (zaklucenia == 1) {
             Y += gausDist(rng);
         }
 		Queue_Y.push_front(Y);
@@ -41,9 +40,9 @@ public:
         return Y;
 	}
 
-    void setARX(std::vector<double>& A, std::vector<double>& B, int delay, bool zaklucenia = 0.0) {
+    void setARX(std::vector<double>& A, std::vector<double>& B, int delay = 0, bool zaklucenia = 0) {
         this->A = A;
-		this->B = B;
+        this->B = B;
 		this->delay = delay;
         this->zaklucenia = zaklucenia;
 		Queue_U.resize(B.size() + delay, 0.0);

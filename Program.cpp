@@ -1,8 +1,12 @@
 #include "Manager.h"
+#include "SprzezenieZwrotne.h"
+#include "RegulatorPID.h"
+#include "ModelARX.h"
 #include <iostream>
+#include <vector>
 #include <iomanip>
 
-#define DEBUG
+#define PROGRAM
 
 #ifdef DEBUG
 
@@ -504,8 +508,8 @@ int main()
 
 void main() {
 	setlocale(LC_ALL, "");
-	std::vector<double>A = { -0,4};
-	std::vector<double>B = { 0,6};
+	std::vector<double>A = { -0,4 };
+	std::vector<double>B = { 0,6 };
 	int delay = 0;
 
 	constexpr size_t PREC = 2;
@@ -518,7 +522,7 @@ void main() {
 
 		for (size_t i = 0; i < 30; i++) {
 			double wynik = instancjaTestowa.SimUAR(i);
-			std::cout << "Czas: " << i << "\t| U: " << instancjaTestowa.getU() << "\t| Y: " << wynik << "\n";
+			std::cout << "Czas: " << i << "\t| Y: " << wynik << "\n";
 		};
 	}
 	catch (const std::invalid_argument& e) {

@@ -3,7 +3,6 @@
 #include <vector>
 #include <iomanip>
 #include "RegulatorPID.h"
-#include "Start.h"
 
 #ifdef DEBUGPID
 

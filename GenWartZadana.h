@@ -1,7 +1,7 @@
 #pragma once
 #include <cmath>
 #include <vector>
-#define M_PI       3.14159265358979323846   // pi
+#define M_PI 3.14159265358979323846
 
 enum class Sygnal { Skok, Prostokat, Sin, Nieustawiony };
 
@@ -9,7 +9,7 @@ class GenWartZadana
 {
 public:
     GenWartZadana(Sygnal typ = Sygnal::Skok, double t = 0.0, double Amp = 0.0, double T = 1.0, double p = 0.0)
-        : typ(typ), t(t), Amp(Amp), T(T), p(p), i(0.0), WartZadana(0.0){}
+        : typ(typ), t(t), Amp(Amp), T(T), p(p), i(0.0) {}
     ~GenWartZadana() {};
 
     double GenerujSygnal(double czas) {
@@ -18,14 +18,11 @@ public:
         i += czas;
         switch (typ) {
         case Sygnal::Skok:
-            WartZadana = (i <= t) ? Amp : 0.0;
-            return WartZadana;
+            return (i <= t) ? Amp : 0.0;
         case Sygnal::Prostokat:
-            WartZadana = (fmod(i, T) < p * T) ? Amp : 0.0;
-            return WartZadana;
+            return (fmod(i, T) < p * T) ? Amp : 0.0;
         case Sygnal::Sin:
-            WartZadana = (Amp * sin(2 * M_PI * fmod(i, T) / T));
-            return WartZadana;
+            return Amp * std::sin(2 * M_PI * (fmod(i, T) / T));
         default:
             return 0.0;
         }
@@ -39,10 +36,7 @@ public:
         p = ParametryGen[3];
         i = 0.0;
     }
-    double getWartZadana() {
-        return WartZadana;
-    }
-    void ResetCzas() { i = 0.0; WartZadana = 0.0; };
+    void ResetCzas() { i = 0.0; };
 private:
     Sygnal typ;
     double t;	// chwila aktywacji
@@ -50,6 +44,4 @@ private:
     double T;	// okres
     double p;	// wypelnienie
     double i;	// czas??
-    double WartZadana;
-
 };

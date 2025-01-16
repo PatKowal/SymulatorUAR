@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include "ModelARX.h"
-#include "Start.h"
 
 #ifdef DEBUGARX
 
