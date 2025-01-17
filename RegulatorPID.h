@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <iostream>
 
 class PID
 {
@@ -13,13 +14,15 @@ public:
 
         double UI_P = k * EI;
         double UI_I = 0.0;
-        if (Ti != 0) {
-            Sum_EI += EI;
+        if (Ti != 0.0) {
+            this->Sum_EI += EI;
             UI_I = Sum_EI / Ti;
         }
         double UI_D = Td * (EI - EI_ost);
         U = UI_P + UI_I + UI_D;
         EI_ost = EI;
+        //std::cout<<"Sum_EI: " << Sum_EI; 
+        //std::cout << "UI_P: "<<UI_P<< "UI_I: " << UI_I << "UI_D: " << UI_D;
         return U;
     };
     void ResetPID() { Sum_EI = 0.0; }

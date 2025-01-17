@@ -6,7 +6,7 @@
 #include <vector>
 #include <iomanip>
 
-#define PROGRAM
+#define DEBUG
 
 #ifdef DEBUG
 
@@ -448,7 +448,7 @@ void test_UAR_2_skokJednostkowy()
 	{
 		// Przygotowanie danych:
 		PID testPID(0.5, 5.0, 0.2);
-		ModelARX testARX({ -0.4 }, { 0.6 }, 2);
+		ModelARX testARX({ -0.4 }, { 0.6},2);
 		SprzezenieZwrotne instancjaTestowa(testARX, testPID);
 		constexpr size_t LICZ_ITER = 30;
 		std::vector<double> sygWe(LICZ_ITER);      // pobudzenie modelu (tu same 0)
@@ -520,9 +520,11 @@ void main() {
 		ModelARX testARX({ -0.4 }, { 0.6 });
 		SprzezenieZwrotne instancjaTestowa({ -0.4 }, { 0.6 }, 0, 0.5, 5.0, 0.2);
 
-		for (size_t i = 0; i < 30; i++) {
-			double wynik = instancjaTestowa.SimUAR(i);
-			std::cout << "Czas: " << i << "\t| Y: " << wynik << "\n";
+		for (size_t i = 0; i < 50; i++) {
+			std::vector<double> wynik = instancjaTestowa.SimUAR(!!i);
+			double sum_ei = 0.0;
+			sum_ei += wynik[1];
+			std::cout << "\tCzas: " << wynik[0] << "\t|EI: " << wynik[1] << "\t | U: " << wynik[2] << "\t | Y: " << wynik[3] << "\n";
 		};
 	}
 	catch (const std::invalid_argument& e) {
