@@ -33,12 +33,9 @@ public slots:
         loop.ResetSim();
         gen_w.ResetCzas();
     }
-    std::vector<double> getWY(){
-        return { gen_w.getWartZadana(),loop.getU(),loop.getY() };
-    }
-    void Symuluj(double czas) {
+    std::vector<double> Symuluj(double czas) {
         double wartZadana = gen_w.GenerujSygnal(czas);
-        loop.SimUAR(wartZadana);
+        return loop.SimUAR(wartZadana);
     }
 
 private:

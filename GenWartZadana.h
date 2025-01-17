@@ -13,19 +13,15 @@ public:
     ~GenWartZadana() {};
 
     double GenerujSygnal(double czas) {
-        //qDebug() << "czas symulacji" << czas;
 
         i += czas;
         switch (typ) {
         case Sygnal::Skok:
-            WartZadana = (i <= t) ? Amp : 0.0;
-            return WartZadana;
+            return (i <= t) ? Amp : 0.0;
         case Sygnal::Prostokat:
-            WartZadana = (fmod(i, T) < p * T) ? Amp : 0.0;
-            return WartZadana;
+            return (fmod(i, T) < p * T) ? Amp : 0.0;
         case Sygnal::Sin:
-            WartZadana = Amp * std::sin(2 * M_PI * (fmod(i, T) / T));
-            return WartZadana;
+            return Amp * std::sin(2 * M_PI * (fmod(i, T) / T));
         default:
             return 0.0;
         }

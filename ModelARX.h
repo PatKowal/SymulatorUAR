@@ -6,9 +6,9 @@
 class ModelARX
 {
 public:
-    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay = 0, bool zaklucenia = 0)
+    ModelARX(const std::vector<double>& A, const std::vector<double>& B, int delay = 1, bool zaklucenia = 0)
         : A(A), B(B), delay(delay), zaklucenia(zaklucenia) {
-		Queue_U = std::deque<double>(B.size() + delay, 0.0);
+        Queue_U = std::deque<double>(B.size() + delay, 0.0);
 		Queue_Y = std::deque<double>(A.size(), 0.0);
 	}
 	~ModelARX() {}
