@@ -536,7 +536,7 @@ void main() {
 
 		for (size_t i = 0; i < LICZ_ITER; i++) {
 			std::vector<double> /*double*/ wynik = instancjaTestowa.SimUAR(sygWe[i]);
-			std::cout << "\tCzas: " << wynik[0] << "\t|EI: " << wynik[1] << "\t | U: " << wynik[5] << "\t | Y: " << wynik[6] << "\n";
+			std::cout << "\tCzas: " << wynik[0] << "\t|EI: " << wynik[1] << "\t | UIP: " << wynik[2] << "\t | UII: " << wynik[3] << "\t | UID: " << wynik[4] << "\t | U: " << wynik[5] << "\t | Y: " << wynik[6] << "\n";
 		};
 	}
 	catch (const std::invalid_argument& e) {
