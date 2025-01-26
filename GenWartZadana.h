@@ -37,11 +37,11 @@ public:
     }
     void ResetCzas() { i = 0.0; };
 private:
-    Sygnal typ;
+    Sygnal typ; // typ generowanego sygnalu
     double t;	// chwila aktywacji
     double Amp;	// wart stala
     double T;	// okres
     double p;	// wypelnienie
     double i;	// czas??
-    double WartZadana;
+    double WartZadana;  //Zadanie symulacji
 };

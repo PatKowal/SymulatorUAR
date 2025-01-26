@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Manager.h" />
-    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="ProgramTestowy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GenWartZadana.h" />

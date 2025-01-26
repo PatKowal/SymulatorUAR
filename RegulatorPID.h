@@ -4,12 +4,12 @@
 class PID
 {
 public:
-    PID(double k, double Ti = 0.0, double Td = 0.0)
-        : k(k), Ti(Ti), Td(Td), Sum_EI(0.0), EI_ost(0.0), U(0.0) {};
+    PID(double wzmocnienie, double stala_calkowania = 0.0, double stala_rozniczkowania = 0.0)
+        : k(wzmocnienie), Ti(stala_calkowania), Td(stala_rozniczkowania), Sum_EI(0.0), EI_ost(0.0), U(0.0) {};
 
     ~PID() {};
 
-    double SumU(double EI) {
+    std::vector<double> SumU(double EI) {
 
         double UI_P = k * EI;
         double UI_I = 0.0;
@@ -21,7 +21,7 @@ public:
         U = UI_P + UI_I + UI_D;
         EI_ost = EI;
 
-        return U;
+        return { UI_P,UI_I,UI_D,U };
     };
     void ResetPID() { Sum_EI = 0.0; }
     void setPID(const std::vector<double>& ParametryPID) {

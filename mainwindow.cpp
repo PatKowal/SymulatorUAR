@@ -100,9 +100,7 @@ void MainWindow::confSim(){
 
 
 void MainWindow::updateChart() {
-    manager->Symuluj(x);
-
-    WY = manager->getWY();
+    WY = manager->Symuluj(x);
 
     series->append(x, WY[1]);
     series2->append(x, WY[2]);
